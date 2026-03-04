@@ -13,7 +13,7 @@ import br.com.ifpe.oxefood.modelo.entregador.Entregador;
 import br.com.ifpe.oxefood.modelo.entregador.EntregadorService;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/entregador")
 @CrossOrigin
 public class EntregadorController {
 
