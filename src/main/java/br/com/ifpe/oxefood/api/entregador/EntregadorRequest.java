@@ -48,6 +48,8 @@ public class EntregadorRequest {
     
     private String enderecoUf;
 
+    private Boolean ativo;
+
     public Entregador build() {
         
         return Entregador.builder()
@@ -61,6 +63,7 @@ public class EntregadorRequest {
             .enderecoNumero(enderecoNumero)
             .enderecoRua(enderecoRua)
             .enderecoUf(enderecoUf)
+            .ativo(ativo)
             .build();
     }
 }
