@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ifpe.oxefood.modelo.produto.Produto;
 import br.com.ifpe.oxefood.modelo.produto.ProdutoService;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 @RestController
 @RequestMapping("/api/produto")
@@ -39,5 +41,12 @@ public class ProdutoController {
     @GetMapping("/{id}")
     public Produto obterPorId(@PathVariable Long id) {
         return produtoService.obterPorId(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Produto> update(@PathVariable Long id, @RequestBody ProdutoRequest request) {
+        
+        produtoService.update(id, request.build());
+        return ResponseEntity.ok().build();
     }
 }

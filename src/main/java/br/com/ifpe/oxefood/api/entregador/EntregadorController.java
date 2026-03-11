@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,23 +22,30 @@ import br.com.ifpe.oxefood.modelo.entregador.EntregadorService;
 @CrossOrigin
 public class EntregadorController {
 
-    @Autowired
-    private EntregadorService entregadorService;
+  @Autowired
+  private EntregadorService entregadorService;
 
-    @PostMapping
-    public ResponseEntity<Entregador> save(@RequestBody EntregadorRequest request) {
+  @PostMapping
+  public ResponseEntity<Entregador> save(@RequestBody EntregadorRequest request) {
 
-        Entregador entregador = entregadorService.save(request.build());
-        return new ResponseEntity<Entregador>(entregador, HttpStatus.CREATED);
-    }
+    Entregador entregador = entregadorService.save(request.build());
+    return new ResponseEntity<Entregador>(entregador, HttpStatus.CREATED);
+  }
 
-    @GetMapping
-    public List<Entregador> listarTodos() {
-        return entregadorService.listarTodos();
-    }
+  @GetMapping
+  public List<Entregador> listarTodos() {
+    return entregadorService.listarTodos();
+  }
 
-    @GetMapping("/{id}")
-    public Entregador obterPorId(@PathVariable Long id) {
-        return entregadorService.obterPorId(id);
-    }
+  @GetMapping("/{id}")
+  public Entregador obterPorId(@PathVariable Long id) {
+    return entregadorService.obterPorId(id);
+  }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<Entregador> update(@PathVariable Long id, @RequestBody EntregadorRequest request) {
+
+    entregadorService.update(id, request.build());
+    return ResponseEntity.ok().build();
+  }
 }
