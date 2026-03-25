@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jakarta.persistence.Column;
+import br.com.ifpe.oxefood.util.exception.ProdutoException;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -18,6 +18,11 @@ public class ProdutoService {
     public Produto save(Produto produto) {
 
         produto.setHabilitado(Boolean.TRUE);
+
+        if (produto.getValorUnitario() < 10) {
+            throw new ProdutoException(ProdutoException.MSG_VALOR_MINIMO_PRODUTO);
+        }
+
         return repository.save(produto);
     }
 
