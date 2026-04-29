@@ -22,32 +22,32 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ClienteRequest {
 
-    @NotNull(message = "O Nome é de preenchimento obrigatório")
-    @NotEmpty(message = "O Nome é de preenchimento obrigatório")
-    @Length(max = 100, message = "O Nome deverá ter no máximo {max} caracteres")
-    private String nome;
+   @NotNull(message = "O Nome é de preenchimento obrigatório")
+   @NotEmpty(message = "O Nome é de preenchimento obrigatório")
+   @Length(max = 100, message = "O Nome deverá ter no máximo {max} caracteres")
+   private String nome;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dataNascimento;
+   @JsonFormat(pattern = "dd/MM/yyyy")
+   private LocalDate dataNascimento;
 
-    @NotBlank(message = "O CPF é de preenchimento obrigatório")
-    @CPF
-    private String cpf;
+   @NotBlank(message = "O CPF é de preenchimento obrigatório")
+   @CPF
+   private String cpf;
 
-    @Length(min = 8, max = 20, message = "O campo Fone tem que ter entre {min} e {max} caracteres")
-    private String foneCelular;
+   @Length(min = 8, max = 20, message = "O campo Fone tem que ter entre {min} e {max} caracteres")
+   private String foneCelular;
 
-    private String foneFixo;
+   private String foneFixo;
 
-    public Cliente build() {
+   public Cliente build() {
 
-        return Cliente.builder()
-                .nome(nome)
-                .dataNascimento(dataNascimento)
-                .cpf(cpf)
-                .foneCelular(foneCelular)
-                .foneFixo(foneFixo)
-                .build();
-    }
+       return Cliente.builder()
+           .nome(nome)
+           .dataNascimento(dataNascimento)
+           .cpf(cpf)
+           .foneCelular(foneCelular)
+           .foneFixo(foneFixo)
+           .build();
+   }
 
 }

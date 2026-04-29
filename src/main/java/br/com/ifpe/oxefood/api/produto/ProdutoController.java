@@ -18,12 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.ifpe.oxefood.modelo.produto.Produto;
 import br.com.ifpe.oxefood.modelo.produto.ProdutoService;
 
-
 @RestController
 @RequestMapping("/api/produto")
 @CrossOrigin
 public class ProdutoController {
-
     @Autowired
     private ProdutoService produtoService;
 
@@ -34,19 +32,19 @@ public class ProdutoController {
         return new ResponseEntity<Produto>(produto, HttpStatus.CREATED);
     }
 
-        @GetMapping
+    @GetMapping
     public List<Produto> listarTodos() {
         return produtoService.listarTodos();
     }
 
     @GetMapping("/{id}")
-    public Produto obterPorId(@PathVariable Long id) {
-        return produtoService.obterPorId(id);
+    public Produto obterPorID(@PathVariable Long id) {
+        return produtoService.obterPorID(id);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Produto> update(@PathVariable Long id, @RequestBody ProdutoRequest request) {
-        
+    public ResponseEntity<Produto> update(@PathVariable("id") Long id, @RequestBody ProdutoRequest request) {
+
         produtoService.update(id, request.build());
         return ResponseEntity.ok().build();
     }

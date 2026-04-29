@@ -21,6 +21,7 @@ public class ClienteService {
     }
 
     public List<Cliente> listarTodos() {
+
         return repository.findAll();
     }
 

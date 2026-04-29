@@ -10,27 +10,25 @@ import jakarta.transaction.Transactional;
 
 @Service
 public class ProdutoService {
-
     @Autowired
     private ProdutoRepository repository;
 
     @Transactional
     public Produto save(Produto produto) {
-
-        produto.setHabilitado(Boolean.TRUE);
-
         if (produto.getValorUnitario() < 10) {
             throw new ProdutoException(ProdutoException.MSG_VALOR_MINIMO_PRODUTO);
         }
 
+        produto.setHabilitado(Boolean.TRUE);
         return repository.save(produto);
     }
 
     public List<Produto> listarTodos() {
+
         return repository.findAll();
     }
 
-    public Produto obterPorId(Long id) {
+    public Produto obterPorID(Long id) {
 
         return repository.findById(id).get();
     }
@@ -39,6 +37,7 @@ public class ProdutoService {
     public void update(Long id, Produto produtoAlterado) {
 
         Produto produto = repository.findById(id).get();
+        produto.setTitulo(produtoAlterado.getTitulo());
         produto.setCodigo(produtoAlterado.getCodigo());
         produto.setDescricao(produtoAlterado.getDescricao());
         produto.setValorUnitario(produtoAlterado.getValorUnitario());

@@ -16,58 +16,59 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class EntregadorRequest {
 
-    private String nome;
+   private String nome;
 
-    private String cpf;
+   @JsonFormat(pattern = "dd/MM/yyyy")
+   private LocalDate dataNascimento;
 
-    private String rg;
+   private String cpf;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dataNascimento;
+   private String foneCelular;
 
-    private String foneCelular;
+   private String foneFixo;
 
-    private String foneFixo;
+   private String rg;
 
-    private Integer qtdEntregasRealizadas;
+   private Integer qtdEntregaRealizadas;
 
-    private Double valorFrete;
+   private Double valorFrete;
 
-    private String enderecoRua;
+   private String enderecoRua;
 
-    private String enderecoComplemento;
+   private String enderecoComplemento;
 
-    private String enderecoNumero;
+   private String enderecoNumero;
 
-    private String enderecoBairro;
+   private String enderecoBairro;
 
-    private String enderecoCidade;
+   private String enderecoCidade;
 
-    private String enderecoCep;
+   private String enderecoUf;
 
-    private String enderecoUf;
+   private String enderecoCep;
 
-    private Boolean ativo;
+   private Boolean ativo;
 
-    public Entregador build() {
-        
-        return Entregador.builder()
-            .nome(nome)
-            .cpf(cpf)
-            .rg(rg)
-            .dataNascimento(dataNascimento)
-            .foneCelular(foneCelular)
-            .foneFixo(foneFixo)
-            .qtdEntregasRealizadas(qtdEntregasRealizadas)
-            .valorFrete(valorFrete)
-            .enderecoRua(enderecoRua)
-            .enderecoComplemento(enderecoComplemento)
-            .enderecoNumero(enderecoNumero)
-            .enderecoBairro(enderecoBairro)
-            .enderecoCidade(enderecoCidade)
-            .enderecoCep(enderecoCep)
-            .enderecoUf(enderecoUf)
-            .ativo(ativo)
-            .build();
-    }
+   public Entregador build() {
+
+       return Entregador.builder()
+           .nome(nome)
+           .dataNascimento(dataNascimento)
+           .cpf(cpf)
+           .foneCelular(foneCelular)
+           .foneFixo(foneFixo)
+           .rg(rg)
+           .qtdEntregaRealizadas(qtdEntregaRealizadas)
+           .valorFrete(valorFrete)
+           .enderecoRua(enderecoRua)
+           .enderecoComplemento(enderecoComplemento)
+           .enderecoNumero(enderecoNumero)
+           .enderecoBairro(enderecoBairro)
+           .enderecoCidade(enderecoCidade)
+           .enderecoUf(enderecoUf)
+           .enderecoCep(enderecoCep)
+           .ativo(ativo)
+           .build();
+   }
+
 }
